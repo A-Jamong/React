@@ -8,6 +8,13 @@ function combineArray() {
   const numberList = [2, -2, 1];
   const countList = [101, 201, 301];
 
+  // 두 배열을 하나로 합하려면?
+  const nList = numberList.concat(countList);
+  console.log(nList);
+
+  const myResult = numberList.slice(0,2).concat(countList.slice(0,2)).concat([numberList.at(-1)]);
+  console.log(myResult)
+
   const combineList = countList
     .slice(0, 2)
     .concat(numberList)
@@ -39,7 +46,10 @@ function combineObject() {
 
   // 🔶 전개 구문을 사용해 spreadCombineOptions 객체 병합 코드를 작성하세요.
   // 참고: https://mzl.la/43TCLgA
-  const spreadCombineOptions = {};
+  const spreadCombineOptions = {
+    ...defaultOptions,
+    ...customOptions
+  };
   console.log(spreadCombineOptions);
 
   // 아래 결과 값이 true가 나와야 합니다.

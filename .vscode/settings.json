@@ -130,5 +130,9 @@
     "info": "📢",
     "hint": "🔔"
   },
+  "editor.tokenColorCustomizations": {
+    "comments": "",
+    "textMateRules": []
+  },
 
 }

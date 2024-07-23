@@ -4,7 +4,7 @@
   "description": "## AUTO_LAYOUT",
   "main": "index.js",
   "scripts": {
-    "dev": "pnpm dlx live-server --host=localhost --port=3000 --no-browser"
+    "dev": "pnpm dlx live-server --host=localhost --port=3000 --no-browser --mount=/:./public"
   },
   "keywords": [],
   "author": "",

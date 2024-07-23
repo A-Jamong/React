@@ -8,6 +8,22 @@ const DRAGGING_CLASSNAME = 'dragging';
 
 const list = document.querySelector('.list');
 
+list.addEventListener('dragover', (e) => {
+  e.preventDefault();
+
+  const draggedItem = listItems.find((item) =>
+    item.classList.contains(DRAGGING_CLASSNAME)
+  );
+
+  const restItems = listItems.filter((item) => !Object.is(item, draggedItem));
+
+  const replaceItem = restItems.find((item, index) => {
+    return e.clientY <= item.offsetTop + item.offsetHeight * 0.5;
+  });
+
+  list.insertBefore(draggedItem, replaceItem);
+});
+
 const listItems = Array.from(list.querySelectorAll('li'));
 
 listItems.forEach((item) => {
@@ -48,20 +64,4 @@ listItems.forEach((item) => {
       }
     });
   }
-});
-
-list.addEventListener('dragover', (e) => {
-  e.preventDefault();
-
-  const draggedItem = listItems.find((item) =>
-    item.classList.contains(DRAGGING_CLASSNAME)
-  );
-
-  const restItems = listItems.filter((item) => !Object.is(item, draggedItem));
-
-  const replaceItem = restItems.find((item, index) => {
-    return e.clientY <= item.offsetTop + item.offsetHeight * 0.5;
-  });
-
-  list.insertBefore(draggedItem, replaceItem);
 });

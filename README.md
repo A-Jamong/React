@@ -5,3 +5,8 @@
 ### AJM : 나 홀로 실습
 ### HOMEWORK : 과제
 
+
+```
+git fetch upstream lecture 
+git merge upstream/lecture
+```

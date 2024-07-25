@@ -2,11 +2,13 @@
   "name": "likelion-10th",
   "version": "0.0.1",
   "description": "## AUTO_LAYOUT",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "dev": "pnpm dlx live-server --host=localhost --port=3000 --no-browser --mount=/:./public"
-  },
+    "dev": "node server.mjs"
+    },
   "keywords": [],
   "author": "",
   "license": "MIT"
+
 }

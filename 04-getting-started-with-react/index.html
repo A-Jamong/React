@@ -3,6 +3,44 @@
 
   <head>
     <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="src/styles/main.css"
+    />
+    <script
+      type="module"
+      src="/04-getting-started-with-react/src/main.js"
+    ></script>
+
+    <!-- <script
+      src="https://unpkg.com/react@18.3.1/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js"
+      crossorigin
+    ></script> -->
+
+  </head>
+
+  <body>
+    <noscript>이 앱을 자바스크립트 활성화가 필요합니다. 브라우저에서 자바스크립트를 활성화해주세요.</noscript>
+    <!-- 리액트 돔 : 리액트 앱을 이 컨테이너 요소에 렌더링 -->
+    <div id="root"></div>
+  </body>
+
+</html>
+<!--버추얼돔 실습
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
     <title>React 시작하기</title>
     <meta
       name="viewport"
@@ -13,41 +51,50 @@
       type="image/svg+xml"
       href="/react.svg"
     />
+    <link
+      rel="stylesheet"
+      href="src/styles/main.css"
+    />
+    <script
+      type="module"
+      src="src/main.js"
+    ></script>
   </head>
 
-  <body> 
-
-    <ul class="architectures" lang="en">
+  <body>
+    <div id="actual-dom"></div>
+    <div id="virtual-dom"></div>
+    <!~~ <ul class="architectures" lang="en">
       <li class="item">
-        <img src="/architectures/architecture-1.jpg" alt="" />
+        <img src="/04-getting-started-with-react/public/architectures/architecture-1.jpg" alt="" />
         <span class="content">Climatology</span>
         <button type="button" title="아이템 이동 (위/아래 화살표 키 활용)">
-          <img src="/icons/handle.svg" alt="아이템 이동 (위/아래 화살표 키 활용)" />
+          <img src="/04-getting-started-with-react/public/icons/handle.svg" alt="아이템 이동 (위/아래 화살표 키 활용)" />
         </button>
       </li>
       <li class="item">
-        <img src="/architectures/architecture-2.jpg" alt="" />
+        <img src="/04-getting-started-with-react/public/architectures/architecture-2.jpg" alt="" />
         <span class="content">History of Architecture</span>
         <button type="button" title="아이템 이동 (위/아래 화살표 키 활용)">
-          <img src="/icons/handle.svg" alt="아이템 이동 (위/아래 화살표 키 활용)" />
+          <img src="/04-getting-started-with-react/public/icons/handle.svg" alt="아이템 이동 (위/아래 화살표 키 활용)" />
         </button>
       </li>
       <li class="item">
-        <img src="/architectures/architecture-3.jpg" alt="" />
+        <img src="/04-getting-started-with-react/public/architectures/architecture-3.jpg" alt="" />
         <span class="content">Graphics</span>
         <button type="button" title="아이템 이동 (위/아래 화살표 키 활용)">
-          <img src="/icons/handle.svg" alt="아이템 이동 (위/아래 화살표 키 활용)" />
+          <img src="/04-getting-started-with-react/public/icons/handle.svg" alt="아이템 이동 (위/아래 화살표 키 활용)" />
         </button>
       </li>
       <li class="item">
-        <img src="/architectures/architecture-4.jpg" alt="" />
+        <img src="/04-getting-started-with-react/public/architectures/architecture-4.jpg" alt="" />
         <span class="content">Building design</span>
         <button type="button" title="아이템 이동 (위/아래 화살표 키 활용)">
-          <img src="/icons/handle.svg" alt="아이템 이동 (위/아래 화살표 키 활용)" />
+          <img src="/04-getting-started-with-react/public/icons/handle.svg" alt="아이템 이동 (위/아래 화살표 키 활용)" />
         </button>
       </li>
     </ul>
-    
+     ~~>
   </body>
 
-</html>
+</html>-->

@@ -12,11 +12,11 @@ const container = document.getElementById("react-app");
 
 // DOM 요소가 존재한다면?
 if (container) {
-  // ArchitectureList 컴포넌트 -> 리액트 엘리먼트 생성
-  // ArchitectureList 컴포넌트에 속성(props) 전달
-  // createRoot(container).render(React.createElement(ArchitectureListPage));
+  
+  // createRoot(container).render(React.createElement(AvatarListPage));
 
-  createRoot(container).render(React.createElement(AvatarListPage));
+  // JSX 는 웹 표준이 아니다. 브라우저에서 해석 불가! 이거 돌리면 바로 오류남!
+  createRoot(container).render(<AvatarListPage />);
 }
 // 존재하지 않는다면?
 else {

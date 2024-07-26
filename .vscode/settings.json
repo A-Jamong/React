@@ -6,7 +6,7 @@
   // 검색 제외
   "search.exclude": {
     "**/coverage": true,
-    "**/node_modules": true
+    // "**/node_modules": false
   },
 
   // 파일 제외

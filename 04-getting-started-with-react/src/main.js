@@ -1,5 +1,5 @@
-import { createElement as h } from 'https://esm.sh/react';
-import { createRoot } from 'https://esm.sh/react-dom';
+import { createElement as h } from "https://esm.sh/react";
+import { createRoot } from "https://esm.sh/react-dom";
 
 // HTML = Hyper Text Markup Language 마크업
 
@@ -13,7 +13,7 @@ const listData = {
 
 const reactiveListData = new Proxy(listData, {
   get(target, prop) {
-    console.log('[GET]');
+    console.log("[GET]");
 
     return target[prop];
   },
@@ -23,47 +23,47 @@ const reactiveListData = new Proxy(listData, {
 
     target[prop] = newValue;
 
-    console.log('[SET] update', JSON.stringify(newValue));
+    console.log("[SET] update", JSON.stringify(newValue));
 
-    console.log('리-렌더링(re-render)');
+    console.log("리-렌더링(re-render)");
     render();
 
     return true;
   },
 });
 
-const container = document.getElementById('root');
+const container = document.getElementById("root");
 
 const reactDomRoot = createRoot(container);
 
 function render() {
   const children = reactiveListData.items.map(({ id, title }) => {
     const reactElement = h(
-      'li',
+      "li",
       {
-        key: id,
-        className: 'item',
+        // key: id,
+        className: "item",
       },
-      h('img', {
+      h("img", {
         src: `/architectures/architecture-${id}.jpg`,
-        alt: '',
+        alt: "",
       }),
       h(
-        'span',
+        "span",
         {
-          className: 'content',
+          className: "content",
         },
         title
       ),
       h(
-        'button',
+        "button",
         {
-          type: 'button',
-          title: '아이템 이동 (위/아래 화살표 키 활용)',
+          type: "button",
+          title: "아이템 이동 (위/아래 화살표 키 활용)",
         },
-        h('img', {
-          src: '/icons/handle.svg',
-          alt: '아이템 이동 (위/아래 화살표 키 활용)',
+        h("img", {
+          src: "/icons/handle.svg",
+          alt: "아이템 이동 (위/아래 화살표 키 활용)",
         })
       )
     );
@@ -72,8 +72,8 @@ function render() {
   });
 
   const list = h(
-    'ul',
-    { className: 'architectures', lang: 'en' },
+    "ul",
+    { className: "architectures", lang: "en" },
 
     children
   );
@@ -91,8 +91,7 @@ setTimeout(() => {
   reactiveListData.items = [
     ...reactiveListData.items,
     {
-      id: 1,
-      title: 'Climatology',
+      title: "Climatology",
     },
   ];
 }, 1000);
@@ -100,8 +99,7 @@ setTimeout(() => {
   reactiveListData.items = [
     ...reactiveListData.items,
     {
-      id: 2,
-      title: 'History of Architecture',
+      title: "History of Architecture",
     },
   ];
 }, 2000);
@@ -109,8 +107,7 @@ setTimeout(() => {
   reactiveListData.items = [
     ...reactiveListData.items,
     {
-      id: 3,
-      title: 'Graphics',
+      title: "Graphics",
     },
   ];
 }, 3000);
@@ -119,8 +116,7 @@ setTimeout(() => {
   reactiveListData.items = [
     ...reactiveListData.items,
     {
-      id: 4,
-      title: 'Building design',
+      title: "Building design",
     },
   ];
 }, 4000);

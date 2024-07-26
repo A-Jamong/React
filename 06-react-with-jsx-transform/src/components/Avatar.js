@@ -50,38 +50,38 @@ function Avatar({ name, photo, status = "offline", size = 64 }) {
 
   const label = `${name} (${statusMessage})`;
 
-  // JSX
-  return (
-    <figure className="Avatar" aria-label={label} title={label}>
-      <img src={`/faces/${photo}`} alt={name} width={size} height={size} />
-      <figcaption>
-        <img src={iconPath} alt="" />
-      </figcaption>
-    </figure>
-  )
+  // // JSX
+  // return (
+  //   <figure className="Avatar" aria-label={label} title={label}>
+  //     <img src={`/faces/${photo}`} alt={name} width={size} height={size} />
+  //     <figcaption>
+  //       <img src={iconPath} alt="" />
+  //     </figcaption>
+  //   </figure>
+  // )
 }
 
-  // return ce(
-  //   "figure",
-  //   {
-  //     className: "Avatar",
-  //     "aria-label": `${name} (상태)`,
-  //   },
-  //   ce("img", {
-  //     src: `./public/avatars/${photo}`,
-  //     alt: name,
-  //     width: size,
-  //     height: size,
-  //   }),
-  //   ce(
-  //     "figcaption",
-  //     null,
-  //     ce("img", {
-  //       src: iconPath,
-  //       alt: "",
-  //     })
-  //   )
-  // );
-}
+  return ce(
+    "figure",
+    {
+      className: "Avatar",
+      "aria-label": `${name} (상태)`,
+    },
+    ce("img", {
+      src: `./public/avatars/${photo}`,
+      alt: name,
+      width: size,
+      height: size,
+    }),
+    ce(
+      "figcaption",
+      null,
+      ce("img", {
+        src: iconPath,
+        alt: "",
+      })
+    )
+  );
+
 
 export default Avatar;

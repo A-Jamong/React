@@ -1,25 +1,68 @@
-import React from "https://esm.sh/react";
-import { createRoot } from "https://esm.sh/react-dom";
+import React from 'https://esm.sh/react';
+import { createRoot } from 'https://esm.sh/react-dom';
 
-// 데이터 가져오기
-import listData from "./src/data/list.js";
+function Avatar({ name, photo, status = 'offline', size = 64 }) {
+  let iconPath = '';
+  let statusMessage = '';
 
-// 컴포넌트 불러오기
-import AvatarListPage from "./src/pages/AvatarListPage.js";
+  switch (status) {
+    default:
+    case 'offline':
+      iconPath = '/icons/status-offline.svg';
+      statusMessage = '오프라인';
+      break;
+    case 'online':
+      iconPath = '/icons/status-online.svg';
+      statusMessage = '온라인';
+      break;
+    case 'dont-disturb':
+      iconPath = '/icons/status-dont-disturb.svg';
+      statusMessage = '방해금지';
+      break;
+    case 'away':
+      iconPath = '/icons/status-away.svg';
+      statusMessage = '자리비움';
+      break;
+  }
 
-// 리액트 앱을 렌더링 할 DOM 요소 참조
-const container = document.getElementById("react-app");
+  const label = `${name} (${statusMessage})`;
 
-// DOM 요소가 존재한다면?
-if (container) {
-  
-  // createRoot(container).render(React.createElement(AvatarListPage));
-
-  // JSX 는 웹 표준이 아니다. 브라우저에서 해석 불가! 이거 돌리면 바로 오류남!
-  createRoot(container).render(<AvatarListPage />);
+  // JSX
+  return (
+    <figure className="Avatar" aria-label={label} title={label}>
+      <img src={`./public/avatars/${photo}`} alt={name} width={size} height={size} />
+      <figcaption>
+        <img src={iconPath} alt="" />
+      </figcaption>
+    </figure>
+  )
 }
-// 존재하지 않는다면?
-else {
-  // 개발자에게 경고
+
+function AvatarListPage() {
+
+  // JSX
+  return (
+    <ul className="AvatarList">
+      <li>
+        <Avatar name="야무" photo="man-02.jpg" status="online" />
+      </li>
+      <li>
+        <Avatar name="범쌤" photo="man-04.jpg" status="away" />
+      </li>
+      <li>
+        <Avatar name="주원" photo="woman-04.jpg" status="dont-disturb" />
+      </li>
+      <li>
+        <Avatar name="정민" photo="woman-01.jpg" />
+      </li>
+    </ul>
+  )
+}
+
+const container = document.getElementById('react-app');
+
+if (container) {
+  createRoot(container).render(<AvatarListPage />);
+} else {
   console.warn('문서에 "#app" 요소가 존재하지 않습니다.');
 }

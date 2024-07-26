@@ -2,10 +2,10 @@ import React from "https://esm.sh/react";
 import { createRoot } from "https://esm.sh/react-dom";
 
 // 데이터 가져오기
-import listData from "./data/list.js";
+import listData from "./src/data/list.js";
 
 // 컴포넌트 불러오기
-import AvatarListPage from "./pages/AvatarListPage.js";
+import AvatarListPage from "./src/pages/AvatarListPage.js";
 
 // 리액트 앱을 렌더링 할 DOM 요소 참조
 const container = document.getElementById("react-app");

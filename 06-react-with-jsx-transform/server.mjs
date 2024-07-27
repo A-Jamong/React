@@ -1,5 +1,3 @@
-// JavaScript를 사용해 Node.js 런타임 환경에서 실행시킬 프로그램 작성
-
 import liveServer from "live-server";
 
 const params = {
@@ -8,8 +6,8 @@ const params = {
   open: false,
   mount: [
     ["/", "./public"],
-    "/icons", "./public/icons",
-    "/avatars", "./public/avatars",
+    ["/icons", "./public/icons"],
+    ["/avatars", "./public/avatars"],
   ],
 };
 

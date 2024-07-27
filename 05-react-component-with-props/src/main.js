@@ -1,65 +1,24 @@
-import { createElement as h } from 'https://esm.sh/react';
+import React from 'https://esm.sh/react';
 import { createRoot } from 'https://esm.sh/react-dom';
+// import { ArchitectureListPage } from './pages/ArchitectureListPage.js';
+import AvatarListPage from './pages/AvatarListPage.js';
 
-const listData = {
-  items: [
-    { id: '1', title: 'Climatology' },
-    { id: '2', title: 'History of Architecture' },
-    { id: '3', title: 'Graphics' },
-    { id: '4', title: 'Building design' },
-  ],
-};
+// 리액트 앱을 렌더링 할 DOM 요소 참조
+const container = document.getElementById('react-app');
 
-const container = document.getElementById('root');
-const reactDomRoot = createRoot(container);
-
-function render() {
-  const children = listData.items.map(({ id, title }) => {
-    const reactElement = h(
-      'li',
-      {
-        key: id,
-        className: 'item',
-      },
-      h('img', {
-        src: `/architectures/architecture-${id}.jpg`,
-        alt: '',
-      }),
-      h(
-        'span',
-        {
-          className: 'content',
-        },
-        title
-      ),
-      h(
-        'button',
-        {
-          type: 'button',
-          title: '아이템 이동 (위/아래 화살표 키 활용)',
-        },
-        h('img', {
-          src: '/icons/handle.svg',
-          alt: '아이템 이동 (위/아래 화살표 키 활용)',
-        })
-      )
-    );
-
-    return reactElement;
-  });
-
-  const list = h(
-    'ul',
-    { className: 'architectures', lang: 'en' },
-
-    children
-  );
-
-  reactDomRoot.render(list);
+// DOM 요소가 존재한다면?
+if (container) {
+  // DOM 요소를 리액트 돔 루트로 만든 후, 리액트 앱 렌더링
+  // 페이지 컴포넌트 렌더링
+  createRoot(container).render(React.createElement(AvatarListPage));
+}
+// 존재하지 않는다면?
+else {
+  // 개발자에게 경고
+  console.warn('문서에 "#app" 요소가 존재하지 않습니다.');
 }
 
-function unmount() {
-  reactDomRoot.unmount();
-}
-
-render();
+// TODO: Avatar 컴포넌트 및 페이지 컴포넌트 작성 후 화면에 표시(렌더링)
+// 1. 페이지 컴포넌트 작성 및 main.js 연결
+// 2. Avatar 컴포넌트 작성 및 status 속성(prop) 설정
+// 2. status 속성(prop)에 따라 화면에 표시되는 Avatar 구성

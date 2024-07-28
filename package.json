@@ -1,12 +1,12 @@
 {
-  "name": "likelion-10th",
-  "version": "0.0.1",
-  "description": "## AUTO_LAYOUT",
-  "main": "index.js",
+  "type": "module",
+  "name": "getting-started-with-react",
+  "description": "",
+  "version": "0.1.0",
   "scripts": {
-    "dev": "pnpm dlx live-server --host=localhost --port=3000 --no-browser --mount=/:./public"
+    "dev": "node server.mjs"
   },
-  "keywords": [],
-  "author": "",
-  "license": "MIT"
+  "devDependencies": {
+    "live-server": "1.2.2"
+  }
 }

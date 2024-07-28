@@ -1,7 +1,7 @@
 # 리액트 프로그래밍
 
 ## REACT_COMPONENT 과제
-[✅ 과제 소스 링크](https://github.com/A-Jamong/React/blob/homework/react-component/src/main.js)
+[✅ 과제 링크](https://github.com/A-Jamong/React/tree/homework/react-component)
 
 두번째 과제부터는 과제 폴더 안에 따로 리드미를 작성했습니다!
 

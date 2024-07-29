@@ -3,7 +3,9 @@ import pluginReact from '@vitejs/plugin-react';
 
 const viteConfig = defineConfig({
   plugins: [
-    pluginReact()
+    pluginReact(
+      // jsxRuntime 
+    )
   ]
 });
 

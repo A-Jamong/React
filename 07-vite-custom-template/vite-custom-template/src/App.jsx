@@ -7,6 +7,8 @@
 // current React Version : v18, v19 RC
 
 function App() {
+
+  // console.log(thisisreactfuntion);
   return (
     <div className="App">
       <h1>React 웹 앱</h1>

@@ -1,5 +1,5 @@
 // React is not defined
-// import Reaact from 'react'
+// import React from 'react'
 // import { jsx } from 'react/jsx-runtime';
 
 // JSX Runtime : Classic

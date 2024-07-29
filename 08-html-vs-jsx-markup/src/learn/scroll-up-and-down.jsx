@@ -7,6 +7,7 @@ function ScrollUpAndDown() {
       <button
         type="button"
         className="scrollDown"
+        onClick={()=>{console.log('clicked scroll down button')}}
         aria-label="스크롤 다운"
         title="스크롤 다운"
       >

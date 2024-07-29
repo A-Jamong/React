@@ -14,11 +14,26 @@ function Learn() {
 
 export default Learn;
 
-function Headline() {
+// eslint-disable-next-line react/prop-types
+function Headline({ hasChildren = false }) {
+  const abbrs = {
+    html: 'Hyper Text Markup Language',
+    // jsx: 'JavaScript eXtension for ECMAScript',
+    jsx: {
+      abbr: 'JavaScript eXtension for ECMAScript',
+      text: '제에엑',
+    },
+  };
+
+  // hasChildren 값이 false면
+  if (!hasChildren) {
+    return '~~';
+  }
+
   return (
     <h1>
-      <abbr title="Hyper Text Markup Language">HTML</abbr> vs.{' '}
-      <abbr title="JavaScript eXtension for ECMAScript">JSX</abbr> 마크업
+      <abbr title={abbrs.html}>HTML</abbr> vs.{' '}
+      <abbr title={abbrs.jsx}>{abbrs.jsx.text}</abbr> 마크업
     </h1>
   );
 }

@@ -21,6 +21,17 @@ function Avatar({ name, photo, status = "offline", size = 64 }) {
       statusMessage = "자리비움";
       break;
   }
+
+  const label = `${name} (${statusMessage})`;
+
+  return (
+    <figure className="Avatar" aria-label={label} title={label}>
+      <img src={`/faces/${photo}`} alt={name} width={size} height={size} />
+      <figcaption>
+        <img src={iconPath} alt="" />
+      </figcaption>
+    </figure>
+  );
 }
 
 export default Avatar;

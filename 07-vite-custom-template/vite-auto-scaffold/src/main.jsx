@@ -1,23 +1,6 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-
-console.log(createRoot)
-
-
-
-  const label = `${name} (${statusMessage})`;
-
-  return (
-    <figure className="Avatar" aria-label={label} title={label}>
-      <img src={`/faces/${photo}`} alt={name} width={size} height={size} />
-      <figcaption>
-        <img src={iconPath} alt="" />
-      </figcaption>
-    </figure>
-  );
-}
-
-
+import React from "react";
+import { createRoot } from "react-dom/client";
+import AvatarListPage from "./pages/AvatarList";
 
 const container = document.getElementById("react-app");
 

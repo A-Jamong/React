@@ -6,8 +6,6 @@ const params = {
   open: false,
   mount: [
     ["/", "./public"],
-    ["/icons", "./public/icons"],
-    ["/avatars", "./public/avatars"],
   ],
 };
 

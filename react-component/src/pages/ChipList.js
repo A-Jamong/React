@@ -1,6 +1,6 @@
 import React, { createElement as cE } from "https://esm.sh/react";
 import { createRoot } from "https://esm.sh/react-dom";
-import Chips from "/src/components/Chips.js";
+import Chips from "../components/Chips.js";
 
 export default function ChipsList() {
   return cE(

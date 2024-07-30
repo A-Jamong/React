@@ -28,6 +28,14 @@ function ConditionalRendering({ imageType }) {
     imagePath = kakaoImagePath;
     printText = 'Kakao';
   }
+
+  const spinnerOrVite =
+    !randomNumber(0, 1) > 0.5 ? (
+      <img className="spinner" src="/icons/spinner.svg" alt="로딩 중..." />
+    ) : (
+      <img src="/vite.svg" alt="Vite" style={{ height: 42 }} />
+    );
+
   // if (imageType.includes('next-js')) {
   //   imagePath = viteImagePath;
   //   printText = 'Next.js';
@@ -51,13 +59,7 @@ function ConditionalRendering({ imageType }) {
       </dd>
       <dd style={{ marginTop: 12 }}>
         <p>spinner 또는 vite 이미지가 랜덤으로 화면에 렌더링 되도록 합니다.</p>
-        <div className="conditionalRendering">
-          {!randomNumber(0, 1) > 0.5 ? (
-            <img className="spinner" src="/icons/spinner.svg" alt="로딩 중..." />
-          ) : (
-            <img src="/vite.svg" alt="Vite" style={{ height: 42 }} />
-          )}
-        </div>
+        <div className="conditionalRendering">{spinnerOrVite}</div>
       </dd>
     </>
   );

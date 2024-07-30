@@ -11,7 +11,6 @@ function DataBinding({ statusMessages }) {
   //   console.warn('statusMessages가 배열이 아니야! 다시 확인해~');
   //   return null;
   // }
-
   const statusMessage =
     statusMessages[randomNumber(0, statusMessages.length - 1)];
 

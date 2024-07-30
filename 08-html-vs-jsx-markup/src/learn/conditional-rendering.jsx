@@ -28,9 +28,8 @@ function ConditionalRendering({ imageType }) {
     imagePath = kakaoImagePath;
     printText = 'Kakao';
   }
-
-  const spinnerOrVite =
-    !randomNumber(0, 1) > 0.5 ? (
+  const isShowSpinner=randomNumber(0, 1) > 0.5;
+  const spinnerOrVite = isShowSpinner ? (
       <img className="spinner" src="/icons/spinner.svg" alt="로딩 중..." />
     ) : (
       <img src="/vite.svg" alt="Vite" style={{ height: 42 }} />
@@ -40,14 +39,11 @@ function ConditionalRendering({ imageType }) {
   //   imagePath = viteImagePath;
   //   printText = 'Next.js';
   // }
-
-  if (imageType.includes('spinner')) {
-    imagePath = spinnerImagePath;
-  }
+  const spinnerMessage = isShowSpinner ? '(스피너 표시)' : null;
 
   return (
     <>
-      <dt>조건부 렌더링(conditional rendering)</dt>
+      <dt>조건부 렌더링(conditional rendering){spinnerMessage}</dt>
       <dd>
         <p>이미지 타입(image type)에 따라 렌더링 여부를 결정합니다.</p>
         <div className="conditionalRendering">

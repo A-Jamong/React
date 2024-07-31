@@ -1,3 +1,0 @@
-functino isValidElement(node){
-  
-}

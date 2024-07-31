@@ -5,7 +5,7 @@
 
 🚀 커스텀 템플릿 가져가기 🚀
 ```
-degit A-Jamong/React#jm-custom-vite/VITE-CUSTOM-TEMPLATE my-folder
+npx degit https://github.com/A-Jamong/React/vite-custom-template#jm-custom-vite my-folder
 ```
 
 📂 **assets**

@@ -1,4 +1,4 @@
-import { array } from "../utils/prop-types";
+import PropTypes, { arra, exact, string } from "../utils/prop-types";
 
 function RenderLists({ items/* string[], Array<string> */ }) {
   

@@ -6,6 +6,19 @@
 // --------------------------------------------------------------------------
 
 function EventWithSideEffects() {
+  const handleCountDown = () => {
+    const countElement = document.querySelector('.countDown .count');
+
+    const clearIntervalId = setInterval(() => {
+      const currentCountValue = Number(countElement.textContent);
+      const nextCountValue = currentCountValue - 1;
+
+      if (nextCountValue < 0) {
+        clearInterval(clearIntervalId);
+      }
+      countElement.value = nextCountValue.toString();
+    }, 10);
+  };
   return (
     <details>
       <summary>
@@ -18,7 +31,9 @@ function EventWithSideEffects() {
         무언가를 변경하는데 최적의 위치입니다.
       </p>
       <div className="countDown">
-        <button type="button">카운트 다운</button>
+        <button type="button" onClick={handleCountDown}>
+          카운트 다운
+        </button>
         <output className="count">100</output>
       </div>
     </details>

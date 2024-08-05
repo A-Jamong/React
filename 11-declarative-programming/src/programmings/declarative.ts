@@ -5,3 +5,13 @@
 // - [ ] 체크박스 및 버튼을 렌더링 하는 함수를 작성합니다.
 // - [ ] 선언된 상태가 변경되면, 체크박스와 버튼을 다시 렌더링합니다.
 // --------------------------------------------------------------------------
+
+import createState from "../lib/createState";
+
+const data = {
+  checked: false,
+};
+const render = () => {};
+
+const [state, setState] = createState(data, render);
+console.log(createState);

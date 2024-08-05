@@ -1,9 +1,8 @@
-import AvatarListPage from './pages/AvatarListPage';
-
+import Counter from './components/Counter';
 function Playground() {
   return (
     <>
-      <AvatarListPage />
+      <Counter count={10} step={4} min={10} max={40} />
     </>
   );
 }

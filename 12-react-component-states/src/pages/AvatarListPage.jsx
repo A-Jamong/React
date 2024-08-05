@@ -1,21 +1,37 @@
 import Avatar from '@/components/Avatar';
-import { STATUS } from '@/constants/STATUS';
+import { avatarData } from '@/data/data';
+// import { STATUS } from '@/constants/STATUS';
+import { useState } from 'react';
+
+// 1. 데이터 분리
+// 2. 컴포넌트 상태로 정의(선언)
+// 3. 이벤트 핸들러 작성(기능 구현)
+// 4. 사용자 상호작용에 따라 화면 업데이트 (확인)
+// 5. 컴포넌트 테스트 (스킵!)
 
 function AvatarListPage() {
+  const [list, setList] = useState(avatarData);
+
+  const handleDeleteItem = (deleteId) => () => {
+    console.log('delete');
+
+    const nextList = list.filter((item) => item.id !== deleteId);
+    setList(nextList);
+  };
+  if (list.length === 0) {
+    return <p style={{ fontSize: 24 }}> 화면에 표시할 아바타가 없습니당. </p>;
+  }
+
   return (
     <ul className="AvatarList">
-      <li>
-        <Avatar name="야무" photo="man-02.jpg" status={STATUS.online} />
-      </li>
-      <li>
-        <Avatar name="범쌤" photo="man-04.jpg" status={STATUS.away} />
-      </li>
-      <li>
-        <Avatar name="주원" photo="woman-04.jpg" status={STATUS.dontDisturb} />
-      </li>
-      <li>
-        <Avatar name="정민" photo="woman-01.jpg" />
-      </li>
+      {list.map((item) => (
+        <li key={item.id}>
+          <Avatar name={item.name} photo={item.photo} status={item.status} />
+          <button type="button" onClick={handleDeleteItem(item.id)}>
+            삭제
+          </button>
+        </li>
+      ))}
     </ul>
   );
 }

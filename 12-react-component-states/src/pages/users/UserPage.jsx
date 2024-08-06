@@ -11,8 +11,13 @@
 import UserSearchBox from './components/UserSearchBox';
 import UserListCount from './components/UserListCount';
 import UsersList from './components/UsersList';
+import { useState } from 'react';
+import { userData } from './data/users.json';
 
 export function UsersPage() {
+  const [users] = useState(userData);
+  console.log(userData);
+
   return (
     <div className="UsersPage">
       <UserSearchBox />

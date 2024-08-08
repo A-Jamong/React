@@ -1,12 +1,19 @@
-import { exact, arrayOf } from 'prop-types';
-import { UserType } from '../../../../../09-component-purity/src/@types/globals.d';
+import { UsersListType } from '../types/user';
+import UserDetail from './UserDetail';
+import './UsersList.css';
 
-Users.propTypes = {
-  users: arrayOf(UserType),
+UsersList.propTypes = {
+  users: UsersListType.isRequired,
 };
 
-function UsersList() {
-  return <div>UsersList</div>;
+function UsersList({ users }) {
+  return (
+    <ul className="UsersList">
+      {users.map((user) => (
+        <UserDetail key={user.id} user={user} />
+      ))}
+    </ul>
+  );
 }
 
 export default UsersList;

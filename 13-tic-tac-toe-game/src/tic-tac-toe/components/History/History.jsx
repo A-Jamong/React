@@ -1,4 +1,4 @@
-export default function History() {
+function History() {
   return (
     <div className="History">
       <ol>
@@ -9,3 +9,5 @@ export default function History() {
     </div>
   );
 }
+
+export default History;

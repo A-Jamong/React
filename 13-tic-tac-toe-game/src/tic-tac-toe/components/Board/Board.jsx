@@ -1,6 +1,7 @@
+import Squares from '../Squares/Squares';
 import Status from '../Status/Status';
-import Squares from '../Square/Squares';
-export default function Board() {
+
+function Board() {
   return (
     <div className="Board">
       <Status />
@@ -8,3 +9,5 @@ export default function Board() {
     </div>
   );
 }
+
+export default Board;

@@ -1,0 +1,7 @@
+.component {
+  * {
+    visibility: hidden;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+  }
+}

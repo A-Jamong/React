@@ -6,12 +6,18 @@ import MotionOneInView from './motion-one-in-view';
 import MotionOneScroll from './motion-one-in-scroll';
 import MotionOneStagger from './motion-one-stagger';
 import Home from './home';
+import UsingImperativeHandle from './using-imperative-handle';
 
 const routes = [
   {
     title: ' 와! 머지!',
     path: '/',
     element: <Home />,
+  },
+  {
+    title: '명령형 핸들 노출',
+    path: '/using-imperative-handle',
+    element: <UsingImperativeHandle />,
   },
   {
     title: '리-렌더 없이 기억',

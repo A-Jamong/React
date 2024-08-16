@@ -5,8 +5,10 @@
 // - [ ] step 값이 변경될 때에는 불필요한 문서 제목 동기화가 되지 않도록 설정합니다.
 // --------------------------------------------------------------------------
 
-import { useId, useState } from 'react';
+import { useId, useState, useEffect } from 'react';
 import S from './Counter.module.css';
+
+// let isMounted = false;
 
 function Counter() {
   const id = useId();
@@ -28,6 +30,24 @@ function Counter() {
   };
 
   const isDisabled = count <= 1;
+
+  /* --- useEffect 는 여러번 쓸 수 있지만 관심사는 분리하자! --- */
+  useEffect(() => {
+    const decreaseButton = document.querySelector('[aria-label="카운트 감소"]');
+    decreaseButton.setAttribute(
+      'title',
+      decreaseButton.getAttribute('aria-label')
+    );
+    console.log('감소');
+  }, []);
+  useEffect(() => {
+    const decreaseButton = document.querySelector('[aria-label="카운트 증가"]');
+    decreaseButton.setAttribute(
+      'title',
+      decreaseButton.getAttribute('aria-label')
+    );
+    console.log('증가');
+  }, []);
 
   return (
     <>

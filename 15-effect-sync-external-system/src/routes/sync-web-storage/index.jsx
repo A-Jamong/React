@@ -5,9 +5,26 @@
 // - [ ] 웹 페이지를 새로고침 하더라도 상태가 유지되도록 설정합니다.
 // --------------------------------------------------------------------------
 
+import { getStorageData, setStroageData } from '../utils/web-storage';
 import Switcher from './components/Switcher';
-
+const DARK_MODE_KEY = '@theme/dark';
 function SyncWebStorage() {
+  // 화살표 함수를 통해서 처음 컴포넌트가 구성될 때 1회 실행되게 하는 게 좋은 것.
+  const [isDarkjMode, setIsDarkMode] = useState(() =>
+    getStorageData(DARK_MODE_KEY, false)
+  );
+
+  useEffect(() => {
+    setStroageData(DARK_MODE_KEY, isDarkjMode);
+  }, [isDarkjMode]);
+
+  const handleSaveDarkMode = () => {
+    setStroageData(DARK_MODE_KEY, isDarkjMode);
+  };
+
+  const handleToggleDarkMode = (nextIsDarkMode) => {
+    setIsDarkMode(nextIsDarkMode);
+  };
   return (
     <main id="page">
       <h1 className="headline">웹 스토리지 동기화</h1>

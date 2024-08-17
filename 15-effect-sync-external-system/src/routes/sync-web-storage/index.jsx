@@ -5,7 +5,8 @@
 // - [ ] 웹 페이지를 새로고침 하더라도 상태가 유지되도록 설정합니다.
 // --------------------------------------------------------------------------
 
-import { getStorageData, setStroageData } from '../utils/web-storage';
+import { useState, useEffect } from 'react';
+import { getStorageData, setStorageData } from '../utils/web-storage';
 import Switcher from './components/Switcher';
 const DARK_MODE_KEY = '@theme/dark';
 function SyncWebStorage() {
@@ -15,11 +16,11 @@ function SyncWebStorage() {
   );
 
   useEffect(() => {
-    setStroageData(DARK_MODE_KEY, isDarkjMode);
+    setStorageData(DARK_MODE_KEY, isDarkjMode);
   }, [isDarkjMode]);
 
   const handleSaveDarkMode = () => {
-    setStroageData(DARK_MODE_KEY, isDarkjMode);
+    setStorageData(DARK_MODE_KEY, isDarkjMode);
   };
 
   const handleToggleDarkMode = (nextIsDarkMode) => {

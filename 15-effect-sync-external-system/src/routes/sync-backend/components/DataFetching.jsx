@@ -1,50 +1,128 @@
-// --------------------------------------------------------------------------
-// ✅ 데이터 패칭
-// --------------------------------------------------------------------------
-// - [ ] API 서버에 데이터를 요청해 응답받은 데이터를 렌더링합니다.
-// - [ ] 이펙트를 사용해 Promise 또는 Async / await를 사용해 데이터 가져오기를 요청합니다.
-// - [ ] 데이터 가져오기 요청 응답이 성공인 경우, 리액트 앱에 데이터를 렌더링합니다.
-// - [ ] 데이터 가져오기 요청 응답에 문제가 발생한 경우, 리액트 앱에 오류 메시지를 렌더링합니다.
-// - [ ] 개발 중에는 <StrictMode>에 의해 컴포넌트의 이펙트가 2번 실행됩니다.
-// - [ ] 이펙트 콜백 함수(1) → 클린업 함수(2) → 이펙트 콜백 함수(2) 순으로 실행됩니다.
-// - [ ] 관련없는 패치가 앱에 영향을 주지않도록 클린업 함수에서 무시하도록 설정합니다.
-// - [ ] AbortController를 사용해 중복된 네트워크 요청을 중단합니다.
-// --------------------------------------------------------------------------
-// ✅ 이펙트가 아닌 경우
-// --------------------------------------------------------------------------
-// - [ ] 애플리케이션 초기화 (컴포넌트 외부에서 실행: 1회 실행 보장)
-// - [ ] 사용자 액션에 의해 실행되는 기능 (이벤트 사용)
-// --------------------------------------------------------------------------
+/* eslint-disable react/no-unescaped-entities */
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { exact, string } from 'prop-types';
 import S from './DataFetching.module.css';
 
-// eslint-disable-next-line no-unused-vars
 const ENDPOINT = '//yamoo9.pockethost.io/api/collections/olive_oil/records';
 
 function DataFetching() {
-  const [isLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [error, setError] = useState(null);
+  // const [data, setData] = useState(null);
 
-  const [error] = useState(null);
+  const [state, setState] = useState({
+    isLoading: false,
+    error: null,
+    data: null,
+  });
 
-  const [data] = useState(null);
+  useEffect(() => {
+    const abortController = new AbortController();
 
-  if (isLoading) {
-    return <p>데이터 로딩 중입니다.</p>;
+    // API 1
+    // setState(nextState);
+    // setState({ ...state, key: value });
+
+    // setIsLoading(true);
+
+    // API 2
+    // setState((previousState) => nextState);
+    // setState((prevState) => ({ ...prevState, key: value }));
+
+    setState((prevState) => ({
+      ...prevState,
+      isLoading: true,
+    }));
+
+    const fetchOliveOil = async () => {
+      try {
+        const response = await fetch(ENDPOINT, {
+          signal: abortController.signal,
+        });
+
+        const responseData = await response.json();
+
+        if (!response.ok) {
+          throw new Error(responseData.message);
+        }
+
+        // setData(responseData);
+        // setIsLoading(false);
+        // setState({
+        //   ...state,
+        //   data: responseData,
+        //   isLoading: false,
+        // });
+
+        setState((prevState) => ({
+          ...prevState,
+          data: responseData,
+          isLoading: false,
+        }));
+      } catch (error) {
+        if (!(error instanceof DOMException)) {
+          // setError(error);
+          // setIsLoading(false);
+          // setState({
+          //   ...state,
+          //   error,
+          //   isLoading: false,
+          // });
+
+          setState((prevState) => ({
+            ...prevState,
+            error,
+            isLoading: false,
+          }));
+        }
+      }
+    };
+
+    fetchOliveOil();
+
+    return () => {
+      abortController.abort();
+    };
+  }, []);
+
+  if (state.isLoading) {
+    return <LoadingMessage />;
   }
 
-  if (error) {
-    return <p role="alert">오류 발생! "{error.message}"</p>;
-  }
-
-  if (data) {
-    console.log(data);
+  if (state.error) {
+    return <PrintError error={state.error} />;
   }
 
   return (
     <div className={S.component}>
-      <p>서버에 데이터 가져오기 요청 후, 앱 화면 업데이트</p>
+      <ul>
+        {state.data?.items.map?.((item) => (
+          <li key={item.id}>{item.name}</li>
+        ))}
+      </ul>
     </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+
+function LoadingMessage() {
+  return <p>데이터 로딩 중...</p>;
+}
+
+PrintError.propTypes = {
+  error: exact({
+    message: string.isRequired,
+  }).isRequired,
+};
+
+function PrintError({ error }) {
+  return (
+    <p role="alert">
+      오류 발생!{' '}
+      <span style={{ fontWeight: 500, color: 'red' }}>"{error.message}"</span>
+    </p>
   );
 }
 

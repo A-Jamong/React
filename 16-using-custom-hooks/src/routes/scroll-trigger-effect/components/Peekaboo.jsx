@@ -4,10 +4,11 @@ import { getRandomMinMax } from '@/utils';
 import S from './Peekaboo.module.css';
 
 function Peekaboo() {
+  // 섹션 관리
   const [sections] = useState(Array(9).fill(null));
-
+  // 피카부 관리
   const [peekaboo, setPeekaboo] = useState(false);
-
+  // 랜덤 인덱스 관리 -> 최소 1 최대 섹션 길이 랜덤 인덱스는 getRandom
   const [randomIndex] = useState(() => {
     const min = 1;
     const max = sections.length;
@@ -15,16 +16,16 @@ function Peekaboo() {
 
     return randomIndex;
   });
-
+  // 피카부 참조?
   const peekabooRef = useRef(null);
-
+  // 피카부 렌더링 함수
   const renderPeekaboo = (idx) =>
     idx === randomIndex ? (
       <span ref={peekabooRef} className={S.peekaboo}>
         👻
       </span>
     ) : null;
-
+  // 애니메이션?
   useEffect(() => {
     const peekabooCharacter = peekabooRef.current;
 
@@ -41,7 +42,7 @@ function Peekaboo() {
       animate(peekabooCharacter, { x: [0, 1000], opacity: [0, 1] });
     }
   }, [peekaboo]);
-
+  // 옵저버가 머임?
   useEffect(() => {
     const targetIndex = randomIndex - 1;
     const targetSectionElements = Array.from(sectionsRef.current.values());
@@ -63,16 +64,16 @@ function Peekaboo() {
       intersectionObserver.unobserve(targetSectionElement);
     };
   }, [randomIndex]);
-
+  // 섹션 참조?
   const sectionsRef = useRef(null);
-
+  // 섹션의 최근?
   const getSectionMap = () => {
     if (!sectionsRef.current) {
       sectionsRef.current = new Map();
     }
     return sectionsRef.current;
   };
-
+  // 뭐지
   const collectSections = (key, sectionElement) => {
     const sectionMap = getSectionMap();
 

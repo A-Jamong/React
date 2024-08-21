@@ -2,14 +2,17 @@ import { bool, func } from 'prop-types';
 import S from './ClockOnOff.module.css';
 import useDocumentTitle from '@/hooks/useDocumentTitle';
 import useClock from '@/hooks/useClock';
+import { useOutletContext } from 'react-router-dom';
 
 ClockOnOff.propTypes = {
   isOn: bool,
   onToggle: func,
 };
 
-function ClockOnOff({ isOn = false, onToggle }) {
+function ClockOnOff() {
   useDocumentTitle('시계 ON/OFF ← 이펙트 동기화 & 정리');
+
+  const { isOn, onToggle } = useOutletContext();
   const time = useClock();
 
   const buttonLabel = isOn ? 'OFF' : 'ON';

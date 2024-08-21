@@ -13,6 +13,10 @@ import EffectSyncAndCleanup from './effect-sync-and-cleanup';
 import ScrollTriggerEffect from './scroll-trigger-effect';
 import SyncBackend from './sync-backend';
 import CheckOnOffline from './check-on-offline';
+import PrintMousePosition from './effect-sync-and-cleanup/components/PrintMousePosition';
+import ClockOnOff from './effect-sync-and-cleanup/components/ClockOnOff';
+import UselessCheckbox from './effect-sync-and-cleanup/components/UselessCheckbox';
+import ClockOnOffWrapper from './effect-sync-and-cleanup/components/ClockOnOffWrapper';
 
 // 루트(경로 집합)
 const routes = [
@@ -22,8 +26,28 @@ const routes = [
     children: [
       { index: true, element: <SyncDocumentTitle /> },
       { path: 'sync-web-storage', element: <SyncWebStorage /> },
-      { path: 'effect-sync-and-cleanup', element: <EffectSyncAndCleanup /> },
-      { path: 'scroll-trigger-effect', element: <ScrollTriggerEffect /> },
+      {
+        path: 'effect-sync-and-cleanup',
+        element: <EffectSyncAndCleanup />,
+        children: [
+          {
+            index: true,
+            element: <PrintMousePosition />,
+          },
+          {
+            path: 'ClockOnOff',
+            element: <ClockOnOff />,
+          },
+          {
+            path: 'UselessCheckbox',
+            element: <UselessCheckbox />,
+          },
+        ],
+      },
+      {
+        path: 'scroll-trigger-effect',
+        element: <ScrollTriggerEffect />,
+      },
       { path: 'sync-backend', element: <SyncBackend /> },
       { path: 'check-on-offline', element: <CheckOnOffline /> },
     ],
